@@ -4,7 +4,9 @@
 
 ## Domain
 
-This RAG system makes FIU student-generated course review knowledge searchable. The domain covers student experiences with specific FIU courses including workload, difficulty, exam format, content quality, and whether a course is worth taking sourced from platforms like Rate My Professors, Reddit, Niche, and Coursicle. This knowledge is hard to find otherwise because official FIU course catalogs describe what a course covers, not what it's actually like to take it. This project aims to bridge that gap, providing students with the insights needed to make informed decisions about course selection, majors, and career paths.
+This RAG system makes student generated casual information about FIU courses searchable and answerable.
+While official details regarding FIU courses and curriculum are readily available online, student-driven reviews on workload, difficulty, exam format and content quality remain difficult to access. This project aims to bridge that gap, providing students with the insights needed to make informed decisions about course selection, majors, and career paths.
+
 
 ---
 

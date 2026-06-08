@@ -4,7 +4,7 @@
 
 ## Domain
 
-This RAG system makes student-generated Florida International University Course Review knowledge searchable. 
+This RAG system makes student generated casual information about FIU courses searchable and answerable.
 While official details regarding FIU courses and curriculum are readily available online, student-driven reviews on workload, difficulty, exam format and content quality remain difficult to access. This project aims to bridge that gap, providing students with the insights needed to make informed decisions about course selection, majors, and career paths.
 
 
