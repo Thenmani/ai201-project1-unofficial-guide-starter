@@ -29,25 +29,40 @@ This RAG system makes FIU student-generated course review knowledge searchable. 
 
 | Parameter | Planned Value | Rationale |
 |-----------|--------------|-----------|
-| Chunk size | ~250 tokens | Matches average review length; keeps one review per chunk |
-| Overlap | ~50 tokens | Preserves context at boundaries without duplication |
-| Strategy | Sentence-aware splitting | Avoids cutting mid-review or mid-sentence |
+The documents in this project are primarily short student reviews (1-5 sentences each) with some longer, multi-paragraph reviews mixed in. To keep each review intact while also providing sufficient context, a chunk size of around 200-300 tokens is appropriate. 
+
+Specific chunking approach:
+- Chunk size: 250 tokens 
+- Overlap: 50 tokens
+- Splitting on sentence boundaries to avoid fragmenting reviews
+
+Rationale: 
+- 250 tokens is large enough to fully contain the majority of reviews, ensuring key information is not split across chunks
+- 50 token overlap provides context from adjacent reviews without significant duplication
+- Sentence-boundary splitting keeps individual opinions cohesive
+
+If chunks were too small (e.g. 50 tokens), many reviews would be fragmented, making it difficult to retrieve full opinions. If chunks were too large (e.g. 1000 tokens), there would be too much irrelevant information per chunk, diluting search results.
+
+Preprocessing will include removing any HTML tags, navigation elements, or repetitive header/footer text before chunking the plain review text.
 
 ---
 
 ## Retrieval Approach
 
-**Embedding model:** all-MiniLM-L6-v2 via sentence-transformers
-- Runs locally without API key, strong semantic similarity performance on short text
+**Embedding model**: all-MiniLM-L6-v2 via sentence-transformers 
+- Provides strong semantic search capabilities
+- Fast inference speed and fully open-source for easy local use
 
-**Top-k:** Retrieve top 5 most relevant chunks per query 
-- Balances having enough context without overwhelming generation step
+**Top-k**: Retrieve the top 5 most relevant chunks per query
+- Provides a balance of sufficient context without overwhelming the LLM
+- Retrieving too few chunks (e.g. top 1-2) risks missing key information
+- Retrieving too many (e.g. top 10+) increases the chance of irrelevant information 
 
-**Production tradeoff reflection:**
-- OpenAI's text-embedding-ada-002 would provide higher quality at low cost
-- Multilingual models like paraphrase-multilingual-MiniLM would better serve FIU's diverse student body
-- Longer context models could handle multi-paragraph reviews without splitting
-- Accuracy on academic/course-specific jargon is important to validate
+**Production considerations for embedding model choice:**
+- Multilingual support: A model like paraphrase-multilingual-MiniLM may be valuable for FIU's diverse student body
+- Inference speed: While all-MiniLM-L6-v2 is fast, larger models may add latency in a production environment
+- Domain-specific accuracy: Testing the model's performance on course-related jargon and slang is important
+- Long-context search: Models that support longer input sequences could help with multi-paragraph reviews
 
 ---
 
@@ -65,11 +80,13 @@ This RAG system makes FIU student-generated course review knowledge searchable. 
 
 ## Anticipated Challenges
 
-1. Inconsistent acronyms and course codes across sources (e.g. "Intro to Databases" vs "COP4710") could lead to missed connections in retrieval. 
-Mitigation: Normalize course codes and titles during ingestion.
+1. Inconsistent course naming across reviews (e.g. "Intro to Databases", "COP 4710", "Databases") could lead to relevant information being missed if not carefully normalized during ingestion and chunking. Mitigation: Implement synonym mapping and normalize course codes.
 
-2. Unhelpful or off-topic review text could be surfaced if semantic similarity is misled by a few key words.   
-Mitigation: Set a similarity threshold for retrieval and validate top-k before passing to generation.
+2. Unhelpful, off-topic, or poorly written reviews may be surfaced due to limitations in semantic search understanding. A chunk may contain a few relevant keywords without being broadly useful. Mitigation: Experiment with different top-k values and semantic search thresholds to optimize relevance.
+
+3. Key information for a single course may be spread across multiple chunks from different reviews, making it harder to synthesize a comprehensive answer. Mitigation: Tune chunk size and overlap to strike a balance between cohesion and context, and ensure the LLM prompt encourages synthesizing information across sources.
+
+4. Sarcasm, idioms, and contradictory opinions in the review text may be misinterpreted by the model. Mitigation: Provide clear instructions in the LLM prompt to identify and handle conflicting information and non-literal language.
 
 ---
 
@@ -95,14 +112,26 @@ E(Answer Synthesis<br>LLM: Claude via Anthropic API)
 ## AI Tool Plan
 
 **Document Ingestion**
-- Tool: Claude (via chat interface) 
-- Input: 10 source URLs + description of desired output format
-- Expected Output: Python script to scrape, clean, and save review text from each URL
-- Verification: Manually inspect a sample of scraped reviews for formatting and metadata
+- Tool: Claude via chat interface 
+- Input: The "Documents" and "Chunking Strategy" sections of `planning.md`, plus pseudocode for the desired output format
+- Expected Output: Python script to scrape text from the specified sources, clean it (remove HTML, headers, footers), and save it in a format ready for chunking
+- Verification: Manually review a sample of scraped documents to ensure completeness and cleanliness
 
 **Chunking**
-- Tool: Claude (via chat interface)
-- Input: Ingested review text files, specified chunk size + overlap parameters  
-- Expected Output: Python script to split review text into consistently-sized chunks
-- Verification: Print a sample of chunks, check for proper splitting and metadata
+- Tool: Claude via chat interface
+- Input: The "Chunking Strategy" section of `planning.md`, specifically the chunk size, overlap, and splitting approach. Plus the ingested document file paths and sample content.
+- Expected Output: Python script to load documents, split text into chunks of the specified size with overlap, and save chunks with metadata (source, position)  
+- Verification: Manually review a sample of chunked documents, checking for proper split points and metadata
+
+**Embedding & Vector DB**
+- Tool: Claude via chat interface
+- Input: The "Retrieval Approach" section of `planning.md`, specifically the embedding model (all-MiniLM-L6-v2) and vector database (ChromaDB). Plus sample chunks for indexing.
+- Expected Output: Python script to load chunks, generate embeddings using the specified model, and insert embeddings into the vector database with chunk metadata
+- Verification: Manually perform test queries on the populated database to verify expected similarity results
+
+**Retrieval & Generation**
+- Tool: Claude via Anthropic API
+- Input: Test queries (from the "Evaluation Plan"), vector database connection details, system prompt with instructions to synthesize an answer from the retrieved chunks and cite sources
+- Expected Output: Relevant chunks retrieved via semantic search, then a generated natural language answer synthesizing information from those chunks
+- Verification: Manually evaluate answers against the expected result for each test query, checking for relevance, accuracy, and proper citation of sources
 
