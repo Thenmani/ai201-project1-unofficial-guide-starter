@@ -35,7 +35,8 @@ While official details regarding FIU courses and curriculum are readily availabl
 
 **Why these choices fit your documents:** The chunk size of ~250 tokens matches the average length of a single review, ensuring that most reviews are kept intact within a single chunk. The overlap of ~50 tokens provides some additional context at chunk boundaries to avoid splitting key information across chunks.
 
-**Final chunk count:** TBD after ingestion
+**Final chunk count:** 54 chunks across 3 documents
+(panthernow.txt: 26, professorsdirectory.txt: 6, reddit_fiu.txt: 22)
 ---
 
 ## Embedding Model
@@ -73,8 +74,8 @@ While official details regarding FIU courses and curriculum are readily availabl
 |---|----------|-----------------|------------------------------|-------------------|-------------------|
 | 1 | Is COP 4710 (Database Management) a difficult course? | Reviews consistently mention high workload, challenging projects, requires significant time commitment | TBD | TBD | TBD |
 | 2 | What do students say about the exams in CHM 1045 (General Chemistry I)? | Exams are very difficult, cover a lot of material, require deep understanding beyond just memorizing | TBD | TBD | TBD |
-| 3 | Is ENC 1101 (Writing and Rhetoric I) a useful course for developing college writing skills? | Reviews often mention improved essay writing, research skills, and confidence in academic writing after taking ENC 1101 | TBD | TBD | TBD |
-| 4 | What are the most useful upper-division electives for CS majors? | Reviews often recommend AI, ML, NLP and data science electives as useful for job market | TBD | TBD | TBD |
+| 3 | What do students say about online courses at FIU? | Students mention flexibility, convenience, saves commute time but online fees are higher than in-person | TBD | TBD | TBD |
+| 4 | What are the hardest CS courses at FIU according to students? | Programming 3, Operating Systems, and Data Structures are consistently mentioned as the hardest | TBD | TBD | TBD |
 | 5 | How much programming experience is needed before taking COP 3530 (Data Structures)? | Most advise taking Intro to Programming (COP 2210) and OOP (COP 3337) first to be well-prepared | TBD | TBD | TBD |
 
 **Retrieval quality:** Relevant / Partially relevant / Off-target  
