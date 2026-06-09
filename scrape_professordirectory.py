@@ -9,7 +9,6 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
 
-# Professors with most reviews at FIU
 professor_urls = [
     'https://www.professors.directory/rate/jose-m-eirin-lopez_florida-international-university',
     'https://www.professors.directory/rate/george-obrien_florida-international-university',
@@ -21,6 +20,25 @@ professor_urls = [
     'https://www.professors.directory/rate/annette-b-fromm_florida-international-university',
 ]
 
+# Skip biography and work history sections
+skip_phrases = [
+    'worked at', 'Marine Corps', 'Navy Reserve',
+    'PhD Candidate', 'Responsible for', 'Professors Directory is',
+    'Professional Experience', 'Goals:', 'Specialties:',
+    'Assistant Professor,', 'Book Chapter in',
+    'Faculty at Florida International',
+    'Higher Education',
+    'Miami/Fort Lauderdale',
+    'research, teaching',
+    'Pre-service and In-service',
+    'NSF Program',
+    'largest database of university professors',
+    # Research abstracts
+    'emergent themes',
+    'Practical implications',
+    'In-depth interviews',
+    'lodging industry recruiters',
+]
 all_text = []
 
 for url in professor_urls:
@@ -31,16 +49,15 @@ for url in professor_urls:
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Get professor name
         name = soup.find('h2')
         name_text = name.get_text(strip=True) if name else 'Unknown'
 
-        # Get all paragraphs with review text (longer than 60 chars)
         paragraphs = soup.find_all('p')
         reviews = [
             p.get_text(strip=True)
             for p in paragraphs
             if len(p.get_text(strip=True)) > 60
+            and not any(phrase in p.get_text() for phrase in skip_phrases)
         ]
 
         if reviews:

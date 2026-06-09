@@ -14,10 +14,19 @@ article_urls = [
     'https://panthernow.com/2024/11/25/fiu-faculty-oppose-volunteering-on-antisemitism-committee-reviews/',
 ]
 
-# Add browser-like headers so the site doesn't block the request
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
+
+# Boilerplate footer phrases to skip — defined OUTSIDE the try block
+skip_phrases = [
+    '© 2026',
+    'Website by CARTA',
+    'PantherNOW Editorial Board',
+    'FIU Student Media',
+    'edited and produced by students',
+    'Website Feedback',
+]
 
 all_text = []
 
@@ -29,16 +38,15 @@ for url in article_urls:
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Get article title
         title = soup.find('h1')
         title_text = title.get_text(strip=True) if title else 'No title'
 
-        # Grab ALL paragraphs and keep only meaningful ones (over 60 chars)
         paragraphs = soup.find_all('p')
         body = ' '.join([
-            p.get_text(strip=True)
+            p.get_text(separator=' ', strip=True)
             for p in paragraphs
             if len(p.get_text(strip=True)) > 60
+            and not any(phrase in p.get_text() for phrase in skip_phrases)
         ])
 
         if body:
