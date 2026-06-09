@@ -47,8 +47,8 @@ If chunks were too small (e.g. 50 tokens), many reviews would be fragmented, mak
 
 Preprocessing will include removing any HTML tags, navigation elements, or repetitive header/footer text before chunking the plain review text.
 
-**Final chunk count:** 42 chunks across 3 documents
-(panthernow.txt: 26, professorsdirectory.txt: 6, reddit_fiu.txt: 10)
+**Final chunk count:** 54 chunks across 3 documents
+(panthernow.txt: 26, professorsdirectory.txt: 6, reddit_fiu.txt: 22)
 
 ---
 
@@ -77,8 +77,8 @@ Preprocessing will include removing any HTML tags, navigation elements, or repet
 |---|----------|-----------------|
 | 1 | Is COP 4710 (Database Management) a difficult course? | Reviews consistently mention high workload, challenging projects, requires significant time commitment  |
 | 2 | What do students say about the exams in CHM 1045 (General Chemistry I)? | Exams are very difficult, cover a lot of material, require deep understanding beyond just memorizing  |
-| 3 | Is ENC 1101 (Writing and Rhetoric I) a useful course for developing college writing skills? | Reviews often mention improved essay writing, research skills, and confidence in academic writing after taking ENC 1101 | 
-| 4 | What are the most useful upper-division electives for CS majors? | Reviews often recommend AI, ML, NLP and data science electives as useful for job market |
+| 3 | What do students say about online courses at FIU? | Students mention flexibility, convenience, saves commute time but online fees are higher than in-person |
+| 4 | What are the hardest CS courses at FIU according to students? | Programming 3, Operating Systems, and Data Structures are consistently mentioned as the hardest |
 | 5 | How much programming experience is needed before taking COP 3530 (Data Structures)? | Most advise taking Intro to Programming (COP 2210) and OOP (COP 3337) first to be well-prepared |
 
 ---
