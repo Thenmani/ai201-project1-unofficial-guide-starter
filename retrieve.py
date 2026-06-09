@@ -32,9 +32,9 @@ def retrieve(query, k=5):
         print(f"Text: {doc[:300]}...")
         print()
 
-# Test with all 5 evaluation plan queries from planning.md
+# Test with all 5 evaluation plan queries from planning.md# Test with all 5 evaluation plan queries
 retrieve("Is COP 4710 (Database Management) a difficult course?")
 retrieve("What do students say about the exams in CHM 1045 (General Chemistry I)?")
-retrieve("Is ENC 1101 (Writing and Rhetoric I) a useful course for developing college writing skills?")
-retrieve("What are the most useful upper-division electives for CS majors?")
+retrieve("What do students say about online courses at FIU?")
+retrieve("What are the hardest CS courses at FIU according to students?")
 retrieve("How much programming experience is needed before taking COP 3530 (Data Structures)?")
