@@ -12,12 +12,18 @@ collection = client.get_or_create_collection(name="fiu_course_reviews")
 
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-def retrieve_chunks(query, k=5):
+def retrieve_chunks(query, k=5, source_filter=None):
     query_embedding = model.encode(query).tolist()
+
+    # Build where clause if source filter is applied
+    where = {"source": source_filter} if source_filter and source_filter != "All Sources" else None
+
     results = collection.query(
         query_embeddings=[query_embedding],
-        n_results=k
+        n_results=k,
+        where=where
     )
+
     chunks = []
     for i in range(len(results["documents"][0])):
         chunks.append({
@@ -27,8 +33,8 @@ def retrieve_chunks(query, k=5):
         })
     return chunks
 
-def ask(question):
-    chunks = retrieve_chunks(question)
+def ask(question, source_filter=None):
+    chunks = retrieve_chunks(question, source_filter=source_filter)
 
     context = ""
     sources = []

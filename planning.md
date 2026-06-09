@@ -140,3 +140,12 @@ E(Answer Synthesis<br>LLM: Claude via Anthropic API)
 - Expected Output: Relevant chunks retrieved via semantic search, then a generated natural language answer synthesizing information from those chunks
 - Verification: Manually evaluate answers against the expected result for each test query, checking for relevance, accuracy, and proper citation of sources
 
+---
+
+## Stretch Features
+
+- [ ] Hybrid Search (BM25 + semantic)
+- [x] Metadata Filtering — implemented source filtering in Gradio UI allowing users
+      to filter results by document source (reddit_fiu.txt, panthernow.txt,
+      professorsdirectory.txt). Filter is passed to ChromaDB query via where clause.
+- [ ] Conversational Memory

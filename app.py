@@ -10,10 +10,11 @@ sample_questions = [
     "How much programming experience is needed before taking COP 3530 (Data Structures)?",
 ]
 
-def handle_query(question):
+def handle_query(question, source_filter):
     if not question.strip() or question == "Select a sample question...":
         return "Please enter or select a question first.", ""
-    result = ask(question)
+
+    result = ask(question, source_filter=source_filter)
     sources = "\n".join(f"- {s}" for s in result["sources"])
     return result["answer"], sources
 
@@ -27,14 +28,28 @@ with gr.Blocks(title="FIU Unofficial Course Guide") as demo:
     gr.Markdown("# FIU Unofficial Course Review Guide")
     gr.Markdown("### Your AI-powered guide to real student experiences at Florida International University")
     gr.Markdown("---")
-    gr.Markdown("> How it works: Select a sample question or type your own. Answers are grounded in real student reviews from Reddit, PantherNOW, and Professors Directory.")
+    gr.Markdown("> How it works: Select a sample question or type your own. Filter by source to narrow results. Answers are grounded in real student reviews.")
 
-    dropdown = gr.Dropdown(
-        choices=sample_questions,
-        value="Select a sample question...",
-        label="Select Question",
-        interactive=True
-    )
+    with gr.Row():
+        with gr.Column(scale=2):
+            dropdown = gr.Dropdown(
+                choices=sample_questions,
+                value="Select a sample question...",
+                label="Select Question",
+                interactive=True
+            )
+        with gr.Column(scale=1):
+            source_filter = gr.Dropdown(
+                choices=[
+                    "All Sources",
+                    "reddit_fiu.txt",
+                    "panthernow.txt",
+                    "professorsdirectory.txt"
+                ],
+                value="All Sources",
+                label="Filter by Source",
+                interactive=True
+            )
 
     inp = gr.Textbox(
         label="Your Question",
@@ -63,7 +78,7 @@ with gr.Blocks(title="FIU Unofficial Course Guide") as demo:
     gr.Markdown("> Disclaimer: Answers are based on student-generated content and may not reflect official FIU policies. Always verify with your academic advisor.")
 
     dropdown.change(load_question, inputs=dropdown, outputs=inp)
-    btn.click(handle_query, inputs=inp, outputs=[answer, sources])
-    inp.submit(handle_query, inputs=inp, outputs=[answer, sources])
+    btn.click(handle_query, inputs=[inp, source_filter], outputs=[answer, sources])
+    inp.submit(handle_query, inputs=[inp, source_filter], outputs=[answer, sources])
 
 demo.launch()
