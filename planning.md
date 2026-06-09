@@ -47,6 +47,9 @@ If chunks were too small (e.g. 50 tokens), many reviews would be fragmented, mak
 
 Preprocessing will include removing any HTML tags, navigation elements, or repetitive header/footer text before chunking the plain review text.
 
+**Final chunk count:** 42 chunks across 3 documents
+(panthernow.txt: 26, professorsdirectory.txt: 6, reddit_fiu.txt: 10)
+
 ---
 
 ## Retrieval Approach
