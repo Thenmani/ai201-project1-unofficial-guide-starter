@@ -87,3 +87,139 @@ COMMENT: I'm taking Pedrero rn for honors seminar and I gotta say he is an amazi
 COMMENT: If John Bailey's Asthetics and Values course is available that one was my favorite. Incredible guy and awesome class outings
 
 ---
+POST: COP 4710 Database Management Enrollment from Waitlist Odds?
+
+New transfer so I don't really know how the enrollment from waitlist flow is. I'm Waitlist place 10 for Fall on COP 4710. How likely do you think it is that I get in or should I look for something else?
+
+COMMENT: When classes are starting you and everyone else will be taken off of the waitlist. When classes start is usually when people start dropping the class (Before the drop date).
+
+During this time if someone drops the class you can register to take that class like normal. It’s first come first serve.
+
+What I recommend doing:
+
+Pick a backup class in case you can’t get it in (could be Database Management with another prof or another time)
+
+Download the app Coursicle (Notifies you when someone drops a class)
+
+As soon as you get that notification register for the class.
+
+You can then do a drop or do a swap with the backup class.
+
+COMMENT:  think this is the only DB Management class online this semester and I don't have many if any back up options that are not in person for Fall is seems which baffles me considering it's an online degree program.
+
+But I'll definitely look into those other things
+
+COMMENT: Always email the professor directly
+
+POST: COP2210 or skip to COP3337
+
+Im transferring to FIU for Summer 2025, and I don't know if I should take COP2210 or COP3337. I've taken an EEL2880 equivalent course, so I should be able to skip COP2210 and go straight into COP3337. The only problem is that I have ZERO experience in java (Not even a hello world). Also, no experience in OOP, and I know that's huge in java, and my experience in memory management is irrelevant since Java automatically manages memory with garbage collection.
+
+Should I just send it and study java at home, or take COP2210 first?
+
+COMMENT: If you don’t have any OOP experience I’d definitely suggest taking COP2210 first. COP3337 expects you to know all of the basics that you were supposed to learn in Programming 1.
+
+COMMENT: I suggest you take COP 2210 on Summer C with Richard Whittaker! He's a good professor, and the assignments are amazing.
+
+I don't think you can take those courses on Summer A or B, and if you can, it's not worth it since it's a six-week course that should be a sixteen-week course.
+
+For COP 3337 I suggest you take it with Kianoush (Gholamiboroujeni)
+
+Take your time and don't rush!
+
+COMMENT: If you transferring in summer you have enough time to learn the basics on YouTube and coding on your free time. I am taking COP3337 right now the first for weeks of class is almost like an introduction to programming
+
+POST: Taking CHM 1045L? Don't buy the book!
+
+Cause I'll scan and upload it for you, for free. Why? Because fuck FIU and their book store, the book is computer paper stapled together anyways. If anyone, like even one person, wants me to I'll start scanning. I just don't want to scan first and have no one use it.
+
+What is says on the cover:
+
+General Chemistry I
+
+Lab Manual
+
+(revised 2013)
+
+CHM 1045L
+
+Dr. Graves
+
+Edit: Let me specify it's the lab manual for the lab not the text book for CHM 1045, which is the lecture, or the lab report book which you'll need for the carbon copies.
+
+Download the First 33 pages for the first assignment here. I'll do the rest tomorrow since scanning is a pain in the ass.
+
+Final edit: Full book.
+
+COMMENT: I, too, am very much opposed to the price of books. However, having taken CHM 1045L, I have to say that the lab manual is one of two, maybe three books I've ever felt good about buying. The cost of the book isn't paper or ink or copyright. That book is filled with labs that professors and assistants are constantly revising and performing.
+
+That price is also a lab fee, paying for the chemicals and manhours spent creating it. Nobody is getting rich off of it. If there is a profit margin, I'm confident it goes right into the lab.
+
+POST: Might fail chm1045
+
+Our prof released the final exam grades on canvas and overall I have a 49%. Should I change a career paths cuz this class was so challenging and stressful to deal with in the first place.
+
+COMMENT: Use it as feedback to improve your study habits. As much as in American society we’re always undermining failures, don’t let it get to you. Retake the class and use it as a moment to improve yourself. You’ll be surprised how much it will help you survive other classes that may be similar or equivalent to the level of difficulty it brings.
+
+COMMENT: I know it seems discouraging and defeating but no! As cheesy as this may sound, you can’t let hurdles like this get in the way of reaching your goals. You can retake the class, and when you do utilize as much resources as you can. Try to look at this situation in a positive light and use it as a lesson to reflect from it and change/find study habits that suit you. Do your best and an upward trend from here on out will outweigh that failing grade in the future. Chm1045 is early course for stem pathways, you got this!😁
+
+COMMENT: lol i failed too unfortunately but passed lab & im a bio major. im just going to try to relearn, do it online in the fall grade forgiveness and move tfff onnn
+
+POST: Questions about ENC online
+
+Does anyone know if enc classes online will ever require one to present? Or will they be 100% online and never require students to meet in a classroom? Please answer if you know. I'm thinking of taking technical writing next semester and I'm hoping taking it online will spare me of having to present anything
+
+COMMENT: I'm currently taking technical writing. I'm fully online.
+
+This depends all on the professor (I'm taking Calderin).
+
+Participation and attendance takes up 30% of the grade, but it's through discussion posts and responding to classmates posts as well as login in periodically to canvas. On the syllabus there is a "presentation" listed but no mention of it on the schedule. It may be from a prior semester or it may be about an assignment were we would be using visual aids.
+
+COMMENT: You're welcome.
+
+And most classes are doing the zoom thing. You do not have to put your camera on and can be muted. It's mostly the professor reviewing stuff and students asking questions. One of my classes does it twice a week. We are only required to login into 4 of them a semester, counts toward 5% of the grade.
+
+COMMENT: Online courses have presentations that are done via voice recording and video. This is also the case for technical writing.
+
+POST: Computer science majors: Hardest classes?
+
+For those that are further into the major. What were your hardest and/or weed out classes?
+
+COMMENT: Programming 3 and Operating Systems for me. Review your C knowledge. Data Structures/Algorithms was a bit tough but I had a good instructor.
+
+COMMENT: f you want to know more about CS at FIU I recommend joining UPE at FIU, a lot of the people at UPE get internships at large tech companies and you will learn a lot that will help in your classes. we also play a lot of videos games lol
+
+https://discord.gg/upefiu
+https://upe.cs.fiu.edu/
+
+COMMENT: It's been a while since I graduated, but one class I like to warn folks about is Discrete Mathematics.
+
+It's one of those courses that sounds easy but actually requires an unexpected amount of study and effort. You're going to have to learn how to formulate mathematical proofs, which requires a new way of thinking you might not be used to.
+
+Discrete Math is not an impossible course, but it's one that you should be prepared for so it doesn't catch you unawares. (like it did me!)
+
+POST: Are these 3 courses doable in one semester?
+
+I’m planning to take CDA 3102 (Computer Architecture), COP 3530 (Data Structures), and COP 4338 (Systems Programming) in the fall. I’ve heard that these 3 classes each on their own are pretty difficult. Am I crazy for taking all 3? For what it’s worth, I’d also be working part-time during this semester. Is the workload manageable?
+
+COMMENT: 'm doing those 3 with software engineering right now. At first it can be a little overwhelming but it's doable once you get in the rhythm of it, it's also helpful to remind yourself you're done with core classes after that semester to keep yourself motivated(except for OS, assuming you're in the BA). What teachers did you get?
+
+POST: CS courses to focus on and be cautious of
+
+I'm a transfer doing the online CS BA degree and I was wondering which courses I should give extra attention to considering I want to be a software engineer and which courses I should be cautious of in the sense that I should take a lighter load with them. Lastly, which professors should I try to avoid?
+
+COMMENT: Data structures would be the most important since that is what is mostly asked in interviews.
+
+In terms of teachers, I took Fields and I got an -A. If other teachers are available then you can try them out instead. I can provide more detail on Fields if your choices are limited.
+
+COMMENT: I recommend theory of algorithms. It's a difficult class for many but it's very fundamental to CS if you're trying get as much as you can out of the degree.
+
+Algorithm techniques is basically technical interview questions, which there's already a ton of online resources to study from. Putting effort into the Cracking the Coding Interview book did more for me personally in a much smaller timeframe than the class did in the whole semester. I recommend taking a more interesting CS elective over Algorithm Techniques that could give you a good project to put on your resume and something to talk about.
+
+COMMENT: Not enough people talk about Net Centric Computing (CNT 4713) because I'm guessing they dismiss it as being something only IT students would need to know, but that class has a lot of networking things that are very much useful to know and gives you a little bit of an understanding as to how certain things work. It's also just an interesting class.
+
+COMMENT: Important course —- A Cs student must know about the network, the layers, socket programming, etc. This is key. This has nothing to do with IT.
+
+IT learn how configure systems, routers, etc. This is not about IT.
+
+Great post !
