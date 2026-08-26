@@ -7,6 +7,12 @@
 This RAG system makes student-generated casual information about FIU courses searchable and answerable. While official details regarding FIU courses and curriculum are readily available online, student-driven reviews on workload, difficulty, exam format, and content quality remain difficult to access. This project aims to bridge that gap, providing students with the insights needed to make informed decisions about course selection, majors, and career paths.
 
 ---
+## Live URL
+Try it here: https://rag-course-guide-fiu-670104592730.us-east1.run.app
+
+Note: the app may take 10–30 seconds to respond on the first request after a period of inactivity (cold start while the embedding model loads). Subsequent requests are fast.
+
+---
 
 ## Document Sources
 
@@ -164,6 +170,25 @@ Retrieved from: reddit_fiu.txt, panthernow.txt
 **Root cause (tied to a specific pipeline stage):** The failure originates at the data collection stage. The documents collected — PantherNOW articles, Professors Directory biography pages, and general Reddit course advice threads — do not contain specific reviews of COP 4710. During retrieval, ChromaDB returned chunks with distance scores above 1.0 (well above the 0.6 relevance threshold), indicating weak semantic matches. The embedding model found only surface-level keyword overlap with "Database Management" appearing once as a mentioned backup class option, not as a reviewed course. With no relevant chunks in context, the LLM correctly declined to generate an answer rather than hallucinating.
 
 **What you would change to fix it:** Collect COP 4710-specific reviews from Rate My Professors or Reddit threads dedicated to that course. Adding even 3-4 direct student reviews of COP 4710 would give the retrieval system enough signal to return relevant chunks with distance scores below 0.6.
+
+---
+
+## Deployment
+
+This app is deployed on **Google Cloud Run**, containerized via Docker and built directly from source using Cloud Build. Key setup details:
+- Runs on Cloud Run's serverless container platform (scales to zero when idle, no cost while unused)
+- API key managed securely via Google Secret Manager, injected as an environment variable at runtime
+- `.gcloudignore` and `.dockerignore` exclude local virtual environments from the build context to keep deploys fast
+
+---
+
+## LLM Provider
+
+The original implementation used the **Groq API** (`llama-3.3-70b-versatile`) for answer generation. This was later migrated to **Google's Gemini API** (`gemini-3.5-flash-lite`) to:
+- Take advantage of Gemini's generous free tier for a publicly hosted demo
+- Simplify credential management alongside the Google Cloud deployment
+
+The migration involved swapping the `groq` SDK for `google-genai`, adjusting how the system prompt is passed (via `system_instruction` in `GenerateContentConfig` rather than as a chat message), and adding retry logic to handle occasional model availability fluctuations gracefully.
 
 ---
 
