@@ -1,4 +1,5 @@
 import gradio as gr
+import os
 from query import ask
 
 sample_questions = [
@@ -81,4 +82,4 @@ with gr.Blocks(title="FIU Unofficial Course Guide") as demo:
     btn.click(handle_query, inputs=[inp, source_filter], outputs=[answer, sources])
     inp.submit(handle_query, inputs=[inp, source_filter], outputs=[answer, sources])
 
-demo.launch()
+    demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))

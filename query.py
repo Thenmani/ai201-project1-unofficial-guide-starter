@@ -1,21 +1,22 @@
 import os
+import time
 import chromadb
 from sentence_transformers import SentenceTransformer
-from groq import Groq
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 load_dotenv()
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-client = chromadb.PersistentClient(path="./vectorstore")
-collection = client.get_or_create_collection(name="fiu_course_reviews")
+client_db = chromadb.PersistentClient(path="./vectorstore")
+collection = client_db.get_or_create_collection(name="fiu_course_reviews")
 
-groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+gemini_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def retrieve_chunks(query, k=5, source_filter=None):
     query_embedding = model.encode(query).tolist()
 
-    # Build where clause if source filter is applied
     where = {"source": source_filter} if source_filter and source_filter != "All Sources" else None
 
     results = collection.query(
@@ -57,17 +58,31 @@ Question: {question}
 
 Answer based only on the documents above. Cite your sources."""
 
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
-        ],
-        max_tokens=500,
-        temperature=0.2
-    )
+    max_retries = 3
+    answer = None
+    last_error = None
 
-    answer = response.choices[0].message.content
+    for attempt in range(max_retries):
+        try:
+            response = gemini_client.models.generate_content(
+                model="gemini-3.5-flash-lite",
+                contents=user_prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_prompt,
+                    max_output_tokens=500,
+                    temperature=0.2
+                )
+            )
+            answer = response.text
+            break
+        except Exception as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                time.sleep(3)
+                continue
+
+    if answer is None:
+        answer = f"The AI service is temporarily unavailable. Please try again in a moment. ({last_error})"
 
     return {
         "answer": answer,

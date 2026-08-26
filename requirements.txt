@@ -4,5 +4,5 @@ sentence-transformers
 chromadb
 python-dotenv
 tiktoken
-groq
+google-genai
 gradio
